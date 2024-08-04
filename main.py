@@ -55,7 +55,7 @@ def encrypt(pas):
     return encrypted_message
 
 def decrypt(encrypted_message):
-    print("Encrypting password...")
+    print("Decrypting password...")
     password = input("Enter encryption password: ").encode()
     en = os.getenv('enc_salt')
     if en is None:
@@ -70,6 +70,7 @@ def decrypt(encrypted_message):
     key = base64.urlsafe_b64encode(kdf.derive(password))
     f = fernet.Fernet(key)
     decrypted_message = f.decrypt(encrypted_message)
+    
     return decrypted_message
 
 def main():
